@@ -15,7 +15,9 @@ namespace FluxPlanner.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new { UserId = 1, FirstName = "Test", LastName = "Test", Email = "test@t.com", WorkLocation = "WFH" }
+                new User { UserId = 1, FirstName = "Test1", LastName = "Test1", Email = "test1@t.com", WorkFromOffice = true },
+                new User { UserId = 2, FirstName = "Test2", LastName = "Test2", Email = "test2@t.com", WorkFromOffice = true },
+                new User { UserId = 3, FirstName = "Test3", LastName = "Test3", Email = "test3@t.com", WorkFromOffice = false }
             );
 
             modelBuilder.Entity<Floor>().HasData(
