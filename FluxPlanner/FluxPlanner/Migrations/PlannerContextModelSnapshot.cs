@@ -35,6 +35,28 @@ namespace FluxPlanner.Migrations
                     b.HasKey("FloorId");
 
                     b.ToTable("Floors");
+
+                    b.HasData(
+                        new
+                        {
+                            FloorId = 1,
+                            FloorNumber = 1
+                        },
+                        new
+                        {
+                            FloorId = 2,
+                            FloorNumber = 2
+                        },
+                        new
+                        {
+                            FloorId = 3,
+                            FloorNumber = 3
+                        },
+                        new
+                        {
+                            FloorId = 4,
+                            FloorNumber = 4
+                        });
                 });
 
             modelBuilder.Entity("FluxPlanner.Models.User", b =>
@@ -57,23 +79,12 @@ namespace FluxPlanner.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WorkLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("WorkFromOffice")
+                        .HasColumnType("bit");
 
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Email = "test@t.com",
-                            FirstName = "Test",
-                            LastName = "Test",
-                            WorkLocation = "WFH"
-                        });
                 });
 #pragma warning restore 612, 618
         }

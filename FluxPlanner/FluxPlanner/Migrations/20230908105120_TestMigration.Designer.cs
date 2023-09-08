@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxPlanner.Migrations
 {
     [DbContext(typeof(PlannerContext))]
-    [Migration("20230907121705_UsersModelAdded")]
-    partial class UsersModelAdded
+    [Migration("20230908105120_TestMigration")]
+    partial class TestMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,44 @@ namespace FluxPlanner.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("FluxPlanner.Models.Floor", b =>
+                {
+                    b.Property<int>("FloorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FloorId"), 1L, 1);
+
+                    b.Property<int>("FloorNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("FloorId");
+
+                    b.ToTable("Floors");
+
+                    b.HasData(
+                        new
+                        {
+                            FloorId = 1,
+                            FloorNumber = 1
+                        },
+                        new
+                        {
+                            FloorId = 2,
+                            FloorNumber = 2
+                        },
+                        new
+                        {
+                            FloorId = 3,
+                            FloorNumber = 3
+                        },
+                        new
+                        {
+                            FloorId = 4,
+                            FloorNumber = 4
+                        });
+                });
 
             modelBuilder.Entity("FluxPlanner.Models.User", b =>
                 {
@@ -42,6 +80,9 @@ namespace FluxPlanner.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("WorkFromOffice")
+                        .HasColumnType("bit");
 
                     b.HasKey("UserId");
 
