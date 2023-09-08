@@ -1,9 +1,16 @@
-﻿namespace FluxPlanner.Models
+﻿using FluxPlanner.Data;
+using System.ComponentModel.DataAnnotations;
+
+namespace FluxPlanner.Models
 {
     public class DeskReservation
     {
-        public int Id { get; set; }
-        public string IdUser{ get; set; }
-        public DateTime ReservationDate { get; set; }
+        [Key]
+        public int ReservationId { get; set; }
+        public int DeskId { get; set; }
+        public int UserId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public ReservationStatus ReservationStatus { get; set; }
     }
 }

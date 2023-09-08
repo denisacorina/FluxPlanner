@@ -4,6 +4,7 @@ using FluxPlanner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxPlanner.Migrations
 {
     [DbContext(typeof(PlannerContext))]
-    partial class PlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20230908140714_AddedDeskModel")]
+    partial class AddedDeskModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,56 +43,6 @@ namespace FluxPlanner.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("Desks");
-
-                    b.HasData(
-                        new
-                        {
-                            DeskId = 1,
-                            IsDeskAvailable = true,
-                            RoomId = 1
-                        },
-                        new
-                        {
-                            DeskId = 2,
-                            IsDeskAvailable = true,
-                            RoomId = 1
-                        },
-                        new
-                        {
-                            DeskId = 3,
-                            IsDeskAvailable = true,
-                            RoomId = 1
-                        },
-                        new
-                        {
-                            DeskId = 4,
-                            IsDeskAvailable = true,
-                            RoomId = 1
-                        },
-                        new
-                        {
-                            DeskId = 5,
-                            IsDeskAvailable = true,
-                            RoomId = 2
-                        },
-                        new
-                        {
-                            DeskId = 6,
-                            IsDeskAvailable = true,
-                            RoomId = 3
-                        },
-                        new
-                        {
-                            DeskId = 7,
-                            IsDeskAvailable = true,
-                            RoomId = 4
-                        },
-                        new
-                        {
-                            DeskId = 8,
-                            IsDeskAvailable = true,
-                            RoomId = 4
-                        });
                 });
 
             modelBuilder.Entity("FluxPlanner.Models.DeskReservation", b =>
@@ -107,11 +59,12 @@ namespace FluxPlanner.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ReservationStatus")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -119,17 +72,6 @@ namespace FluxPlanner.Migrations
                     b.HasKey("ReservationId");
 
                     b.ToTable("DeskReservations");
-
-                    b.HasData(
-                        new
-                        {
-                            ReservationId = 1,
-                            DeskId = 1,
-                            EndDate = new DateTime(2023, 9, 8, 14, 52, 13, 616, DateTimeKind.Utc).AddTicks(586),
-                            ReservationStatus = 0,
-                            StartDate = new DateTime(2023, 9, 8, 14, 52, 13, 616, DateTimeKind.Utc).AddTicks(585),
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("FluxPlanner.Models.Floor", b =>
@@ -146,28 +88,6 @@ namespace FluxPlanner.Migrations
                     b.HasKey("FloorId");
 
                     b.ToTable("Floors");
-
-                    b.HasData(
-                        new
-                        {
-                            FloorId = 1,
-                            FloorNumber = 1
-                        },
-                        new
-                        {
-                            FloorId = 2,
-                            FloorNumber = 2
-                        },
-                        new
-                        {
-                            FloorId = 3,
-                            FloorNumber = 3
-                        },
-                        new
-                        {
-                            FloorId = 4,
-                            FloorNumber = 4
-                        });
                 });
 
             modelBuilder.Entity("FluxPlanner.Models.Room", b =>
@@ -196,48 +116,6 @@ namespace FluxPlanner.Migrations
                     b.HasIndex("FloorId");
 
                     b.ToTable("Rooms");
-
-                    b.HasData(
-                        new
-                        {
-                            RoomId = 1,
-                            AvailableDesks = 30,
-                            FloorId = 1,
-                            RoomName = "ADV D TLS",
-                            TotalDesks = 30
-                        },
-                        new
-                        {
-                            RoomId = 2,
-                            AvailableDesks = 20,
-                            FloorId = 1,
-                            RoomName = "ADV D PAD",
-                            TotalDesks = 20
-                        },
-                        new
-                        {
-                            RoomId = 3,
-                            AvailableDesks = 30,
-                            FloorId = 2,
-                            RoomName = "ADV D ADC",
-                            TotalDesks = 30
-                        },
-                        new
-                        {
-                            RoomId = 4,
-                            AvailableDesks = 10,
-                            FloorId = 3,
-                            RoomName = "ADV D FRS",
-                            TotalDesks = 10
-                        },
-                        new
-                        {
-                            RoomId = 5,
-                            AvailableDesks = 30,
-                            FloorId = 4,
-                            RoomName = "ADV D JRD",
-                            TotalDesks = 30
-                        });
                 });
 
             modelBuilder.Entity("FluxPlanner.Models.User", b =>

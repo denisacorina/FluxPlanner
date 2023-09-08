@@ -14,14 +14,14 @@ namespace FluxPlanner.Repository
 
         public IEnumerable<DeskReservation> GetReservations()
         {
-            return _context.DeskReservation.ToList();
+            return _context.DeskReservations.ToList();
         }
 
         public DeskReservation CreateReservation(DeskReservation reservation)
         {
-            _context.DeskReservation.Add(reservation);
+            _context.DeskReservations.Add(reservation);
             _context.SaveChanges();
             return reservation;
         }
-
-    }    }
+    }
+}

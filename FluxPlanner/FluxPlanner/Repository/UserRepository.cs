@@ -10,15 +10,9 @@ namespace FluxPlanner.Repository
         {
             _context = context;
         }
-        public IEnumerable<User> GetReservations()
+        public IEnumerable<User> GetUsers()
         {
             return _context.Users.ToList();
         }
-
-        public DeskReservation CreateReservation(User users)
-        {
-            return null;
-        }
-
     }
 }

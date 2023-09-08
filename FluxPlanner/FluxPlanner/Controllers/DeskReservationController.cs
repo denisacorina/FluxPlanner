@@ -21,11 +21,12 @@ namespace FluxPlanner.Controllers
             var reservations = _repository.GetReservations();
             return Ok(reservations);
         }
+
         [HttpPost]
         public ActionResult<DeskReservation> CreateReservation(DeskReservation reservation)
         {
             var createdReservation = _repository.CreateReservation(reservation);
-            return CreatedAtAction(nameof(GetReservations), new { id = createdReservation.Id }, createdReservation);
+            return CreatedAtAction(nameof(GetReservations), new { id = createdReservation.DeskId }, createdReservation);
         }
     }
     }

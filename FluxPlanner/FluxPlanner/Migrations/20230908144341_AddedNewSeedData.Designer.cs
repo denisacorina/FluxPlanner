@@ -4,6 +4,7 @@ using FluxPlanner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxPlanner.Migrations
 {
     [DbContext(typeof(PlannerContext))]
-    partial class PlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20230908144341_AddedNewSeedData")]
+    partial class AddedNewSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,30 +68,6 @@ namespace FluxPlanner.Migrations
                             DeskId = 4,
                             IsDeskAvailable = true,
                             RoomId = 1
-                        },
-                        new
-                        {
-                            DeskId = 5,
-                            IsDeskAvailable = true,
-                            RoomId = 2
-                        },
-                        new
-                        {
-                            DeskId = 6,
-                            IsDeskAvailable = true,
-                            RoomId = 3
-                        },
-                        new
-                        {
-                            DeskId = 7,
-                            IsDeskAvailable = true,
-                            RoomId = 4
-                        },
-                        new
-                        {
-                            DeskId = 8,
-                            IsDeskAvailable = true,
-                            RoomId = 4
                         });
                 });
 
@@ -107,11 +85,12 @@ namespace FluxPlanner.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ReservationStatus")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -119,17 +98,6 @@ namespace FluxPlanner.Migrations
                     b.HasKey("ReservationId");
 
                     b.ToTable("DeskReservations");
-
-                    b.HasData(
-                        new
-                        {
-                            ReservationId = 1,
-                            DeskId = 1,
-                            EndDate = new DateTime(2023, 9, 8, 14, 52, 13, 616, DateTimeKind.Utc).AddTicks(586),
-                            ReservationStatus = 0,
-                            StartDate = new DateTime(2023, 9, 8, 14, 52, 13, 616, DateTimeKind.Utc).AddTicks(585),
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("FluxPlanner.Models.Floor", b =>
