@@ -11,6 +11,8 @@ namespace FluxPlanner.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Floor> Floors { get; set; }
+        public DbSet<DeskReservation> DeskReservation { get; set; }
+        public DbSet<Room> Room { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
