@@ -22,11 +22,10 @@ builder.Services.AddDbContext<PlannerContext>(options =>
 builder.Services.AddScoped<ReservationRepository>();
 
 //USERS
-builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<IUserRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-builder.Services.AddScoped<IUserService>();
-builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 var app = builder.Build();
 
