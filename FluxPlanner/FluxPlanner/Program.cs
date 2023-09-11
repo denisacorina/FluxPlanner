@@ -1,5 +1,7 @@
 ﻿using FluxPlanner.Data;
+using FluxPlanner.Interfaces;
 using FluxPlanner.Repository;
+using FluxPlanner.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,13 @@ builder.Services.AddDbContext<PlannerContext>(options =>
 });
 
 builder.Services.AddScoped<ReservationRepository>();
+
+//USERS
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<IUserRepository>();
+
+builder.Services.AddScoped<IUserService>();
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
