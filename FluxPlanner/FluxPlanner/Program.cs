@@ -1,5 +1,6 @@
 ﻿using FluxPlanner.Data;
-using FluxPlanner.Interfaces;
+using FluxPlanner.Interfaces.IRepository;
+using FluxPlanner.Interfaces.IService;
 using FluxPlanner.Repository;
 using FluxPlanner.Services;
 using Microsoft.EntityFrameworkCore;

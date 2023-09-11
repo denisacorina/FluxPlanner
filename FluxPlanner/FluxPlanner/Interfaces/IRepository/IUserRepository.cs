@@ -1,9 +1,9 @@
 ﻿using FluxPlanner.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FluxPlanner.Interfaces
+namespace FluxPlanner.Interfaces.IRepository
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         public Task<ActionResult<IEnumerable<User>>> GetUsers();
         public Task<ActionResult<User>> GetUser(int id);

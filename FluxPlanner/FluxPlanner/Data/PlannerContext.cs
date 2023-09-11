@@ -15,7 +15,6 @@ namespace FluxPlanner.Data
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Desk> Desks { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
