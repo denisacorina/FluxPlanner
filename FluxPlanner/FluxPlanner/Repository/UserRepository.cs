@@ -1,11 +1,12 @@
 ﻿using FluxPlanner.Data;
+using FluxPlanner.Interfaces;
 using FluxPlanner.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FluxPlanner.Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly PlannerContext _context;
         public UserRepository(PlannerContext context)

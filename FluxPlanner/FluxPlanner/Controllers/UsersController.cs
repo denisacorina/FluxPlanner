@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using FluxPlanner.Data;
+﻿using FluxPlanner.Interfaces;
 using FluxPlanner.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FluxPlanner.Controllers
 {
@@ -14,55 +8,33 @@ namespace FluxPlanner.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly PlannerContext _context;
+        private readonly IUserService _userService;
 
-        public UsersController(PlannerContext context)
+        public UsersController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
-            return await _context.Users.ToListAsync();
+            return await _userService.GetUsers();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
-            var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
+            var user = await _userService.GetUser(id);
             return user;
         }
 
-      
         // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> CreateUser(User user)
         {
-          if (_context.Users == null)
-          {
-              return Problem("Entity set 'PlannerContext.Users'  is null.");
-          }
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
+            await _userService.CreateUser(user);
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
@@ -70,20 +42,8 @@ namespace FluxPlanner.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            if (_context.Users == null)
-            {
-                return NotFound();
-            }
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
+            await _userService.DeleteUser(id);
             return NoContent();
-        }      
+        }
     }
 }
