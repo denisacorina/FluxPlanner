@@ -23,8 +23,11 @@ builder.Services.AddScoped<ReservationRepository>();
 
 //USERS
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-
 builder.Services.AddScoped<IUserService, UserService>();
+
+//FLOORS
+builder.Services.AddScoped<IFloorRepository, FloorRepository>();
+builder.Services.AddScoped<IFloorService, FloorService>();
 
 
 var app = builder.Build();
