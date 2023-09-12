@@ -28,11 +28,9 @@ namespace FluxPlanner.Services
                     EndDate = reservation.EndDate,
                     ReservationStatus = ReservationStatus.Reserved
                 };
-
               
                 await _deskReservationRepository.CreateDeskReservation(newReservation);
                 return newReservation;
-              
             }
             else
             {
