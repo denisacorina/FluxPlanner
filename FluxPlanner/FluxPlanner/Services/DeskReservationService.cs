@@ -14,6 +14,7 @@ namespace FluxPlanner.Services
         {
             _deskReservationRepository = deskReservationRepository;
         }
+
         public async Task<DeskReservation> CreateDeskReservation(DeskReservation reservation)
         {
             bool isDeskAvailable = _deskReservationRepository.IsDeskAvailableForReservation(reservation.DeskId, reservation.StartDate, reservation.EndDate);

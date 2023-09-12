@@ -23,14 +23,29 @@ namespace FluxPlanner.Services
             await _deskRepository.DeleteDesk(deskId);     
         }
 
+        public Task<IEnumerable<Desk>> GetAllAvailableDesks(DateTime startDate, DateTime endDate)
+        {
+            return _deskRepository.GetAllAvailableDesks(startDate, endDate);
+        }
+
         public Task<IEnumerable<Desk>> GetAllDesks()
         {
             return _deskRepository.GetAllDesks();
         }
 
+        public Task<IEnumerable<Desk>> GetAvailableDesksByRoom(DateTime startDate, DateTime endDate, int roomId)
+        {
+            return _deskRepository.GetAvailableDesksByRoom(startDate, endDate, roomId);
+        }
+
         public Task<Desk> GetDeskById(int deskId)
         {
             return _deskRepository.GetDeskById(deskId);
+        }
+
+        public Task<IEnumerable<Desk>> GetDesksByRoom(int roomId)
+        {
+            return _deskRepository.GetDesksByRoom(roomId);
         }
 
         public async Task<bool> UpdateDesk(Desk desk)

@@ -9,5 +9,8 @@ namespace FluxPlanner.Interfaces.IService
         Task<int> CreateDesk(Desk desk);
         Task<bool> UpdateDesk(Desk desk);
         Task<bool> DeleteDesk(int deskId);
+        public Task<IEnumerable<Desk>> GetDesksByRoom(int roomId);
+        public Task<IEnumerable<Desk>> GetAllAvailableDesks(DateTime startDate, DateTime endDate);
+        public Task<IEnumerable<Desk>> GetAvailableDesksByRoom(DateTime startDate, DateTime endDate, int roomId);
     }
 }

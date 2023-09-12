@@ -1,7 +1,5 @@
 ﻿using FluxPlanner.Interfaces.IService;
 using FluxPlanner.Models;
-using FluxPlanner.Repository;
-using FluxPlanner.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FluxPlanner.Controllers
@@ -30,4 +28,4 @@ namespace FluxPlanner.Controllers
             return CreatedAtAction(nameof(GetReservations), new { id = createdReservation.ReservationId }, createdReservation);
         }
     }
-    }
+}

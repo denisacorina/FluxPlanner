@@ -25,6 +25,16 @@ namespace FluxPlanner.Repository
             _context.DeskReservations.Add(reservation);
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<int>> GetReservedDesks(DateTime startDate, DateTime endDate)
+        {
+            var reservedDesks = await _context.DeskReservations
+                .Where(r => !(r.EndDate <= startDate || r.StartDate >= endDate) || (r.StartDate <= startDate && r.EndDate >= endDate))
+                .Select(d => d.DeskId)
+                .Distinct()
+                .ToListAsync();
+
+            return reservedDesks;
+        }
 
         public bool IsDeskAvailableForReservation(int deskId, DateTime startDate, DateTime endDate)
         {

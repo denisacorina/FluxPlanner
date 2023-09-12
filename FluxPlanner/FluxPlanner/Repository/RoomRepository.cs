@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FluxPlanner.Repository
 {
-    public class RoomRepository:IRoomRepository
+    public class RoomRepository : IRoomRepository
     {
         private readonly PlannerContext _context;
 
@@ -23,7 +23,6 @@ namespace FluxPlanner.Repository
         {
             return await _context.Rooms.FindAsync(RoomId);
         }
-
       
         public async Task<bool> DeleteRoom(int RoomId)
         {
@@ -36,6 +35,13 @@ namespace FluxPlanner.Repository
             _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<IEnumerable<Room>> GetRoomsByFloor(int floorId)
+        {
+            return await _context.Rooms
+                .Where(f => f.FloorId == floorId)
+                .ToListAsync();
         }
     }
 }
