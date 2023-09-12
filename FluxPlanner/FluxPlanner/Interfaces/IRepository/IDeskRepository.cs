@@ -6,9 +6,8 @@ namespace FluxPlanner.Interfaces.IRepository
     {
         Task<IEnumerable<Desk>> GetAllDesks();
         Task<Desk> GetDeskById(int deskId);
-        Task<int> CreateDesk(Desk desk);
-        Task<bool> UpdateDesk(Desk desk);
-        Task<bool> DeleteDesk(int deskId);
+        Task CreateDesk(Desk desk);
+        Task DeleteDesk(int deskId);
     }
 
 }

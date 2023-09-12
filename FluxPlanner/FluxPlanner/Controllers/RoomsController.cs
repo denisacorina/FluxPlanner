@@ -1,4 +1,5 @@
 ﻿using FluxPlanner.Interfaces.IRepository;
+using FluxPlanner.Interfaces.IService;
 using FluxPlanner.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,26 +7,26 @@ namespace FluxPlanner.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomController : Controller
+    public class RoomsController : Controller
     {
-        private readonly IRoomRepository _roomRepository;
+        private readonly IRoomService _roomService;
 
-        public RoomController(IRoomRepository roomRepository)
+        public RoomsController(IRoomService roomService)
         {
-            _roomRepository = roomRepository;
+            _roomService = roomService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
         {
-            var rooms = await _roomRepository.GetAllRooms();
+            var rooms = await _roomService.GetAllRooms();
             return Ok(rooms);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
-            var room = await _roomRepository.GetRoomById(id);
+            var room = await _roomService.GetRoomById(id);
 
             if (room == null)
             {
@@ -38,13 +39,7 @@ namespace FluxPlanner.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int id)
         {
-            var deleted = await _roomRepository.DeleteRoom(id);
-
-            if (!deleted)
-            {
-                return NotFound();
-            }
-
+             await _roomService.DeleteRoom(id);
             return NoContent();
         }
     }

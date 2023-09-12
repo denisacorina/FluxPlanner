@@ -18,34 +18,22 @@ namespace FluxPlanner.Repository
             await _context.SaveChangesAsync();
         }
 
-        public Task<bool> DeleteDesk(int deskId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Desk>> GetAllDesks()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<Desk> GetDeskById(int DeskId)
         {
             return await _context.Desks.FindAsync(DeskId);
         }
-        public async Task<IEnumerable<Desk>> GetAllDesksAsync()
+        public async Task<IEnumerable<Desk>> GetAllDesks()
         {
             return await _context.Desks.ToListAsync();
         }
+        
+        //TODO:implement the methods
+        
 
-
-        public Task<bool> UpdateDesk(Desk desk)
+        public Task DeleteDesk(int deskId)
         {
             throw new NotImplementedException();
         }
 
-        Task<int> IDeskRepository.CreateDesk(Desk desk)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

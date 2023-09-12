@@ -8,7 +8,6 @@ namespace FluxPlanner.Data
         public PlannerContext(DbContextOptions<PlannerContext> options) : base(options)
         {
         }
-
         public DbSet<User> Users { get; set; }
         public DbSet<Floor> Floors { get; set; }
         public DbSet<DeskReservation> DeskReservations { get; set; }

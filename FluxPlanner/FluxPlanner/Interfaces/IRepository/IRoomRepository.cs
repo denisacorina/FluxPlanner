@@ -6,6 +6,6 @@ namespace FluxPlanner.Interfaces.IRepository
     {
         Task<IEnumerable<Room>> GetAllRooms();
         Task<Room> GetRoomById(int roomId);
-        Task<bool> DeleteRoom(int roomId);
+        Task DeleteRoom(int roomId);
     }
 }

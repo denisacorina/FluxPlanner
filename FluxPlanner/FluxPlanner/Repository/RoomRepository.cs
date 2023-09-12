@@ -1,6 +1,7 @@
 ﻿using FluxPlanner.Data;
 using FluxPlanner.Interfaces.IRepository;
 using FluxPlanner.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FluxPlanner.Repository
@@ -25,18 +26,16 @@ namespace FluxPlanner.Repository
         }
 
       
-        public async Task<bool> DeleteRoom(int RoomId)
+        public async Task DeleteRoom(int RoomId)
         {
             var room = await _context.Rooms.FindAsync(RoomId);
-            if (room == null)
+            if (room != null)
             {
-                return false;
+                _context.Rooms.Remove(room);
+                await _context.SaveChangesAsync();
             }
-
-            _context.Rooms.Remove(room);
-            await _context.SaveChangesAsync();
-            return true;
         }
+
     }
 }
 
