@@ -13,16 +13,6 @@ namespace FluxPlanner.Services
             _deskRepository = deskRepository;
         }
 
-        public Task<int> CreateDesk(Desk desk)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task DeleteDesk(int deskId)
-        {
-            await _deskRepository.DeleteDesk(deskId);     
-        }
-
         public Task<IEnumerable<Desk>> GetAllAvailableDesks(DateTime startDate, DateTime endDate)
         {
             return _deskRepository.GetAllAvailableDesks(startDate, endDate);
@@ -46,15 +36,6 @@ namespace FluxPlanner.Services
         public Task<IEnumerable<Desk>> GetDesksByRoom(int roomId)
         {
             return _deskRepository.GetDesksByRoom(roomId);
-        }
-
-        public async Task<bool> UpdateDesk(Desk desk)
-        {
-            return await _deskRepository.UpdateDesk(desk);        }
-
-        Task<bool> IDeskService.DeleteDesk(int deskId)
-        {
-            throw new NotImplementedException();
         }
     }
 }
