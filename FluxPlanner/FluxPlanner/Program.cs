@@ -32,9 +32,11 @@ builder.Services.AddScoped<IFloorService, FloorService>();
 
 //DESKS
 builder.Services.AddScoped<IDeskRepository, DeskRepository>();
+builder.Services.AddScoped<IDeskService, DeskService>();
 
 //ROOMS
-//builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IRoomService, RoomService>();
 
 //DESK RESERVATIONS
 builder.Services.AddScoped<IDeskReservationRepository, DeskReservationRepository>();
