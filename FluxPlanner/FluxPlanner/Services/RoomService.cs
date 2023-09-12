@@ -25,7 +25,7 @@ namespace FluxPlanner.Services
             return await _roomRepository.GetRoomById(id);
         }
 
-        public async Task<ActionResult<IEnumerable<Room>>> GetAllRooms()
+        public async Task<IEnumerable<Room>> GetAllRooms()
         {
             return await _roomRepository.GetAllRooms();
         }
