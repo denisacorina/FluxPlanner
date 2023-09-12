@@ -1,31 +1,43 @@
-﻿using FluxPlanner.Interfaces.IService;
+﻿using FluxPlanner.Interfaces.IRepository;
+using FluxPlanner.Interfaces.IService;
 using FluxPlanner.Models;
 
 namespace FluxPlanner.Services
 {
     public class DeskService : IDeskService
     {
+        private readonly IDeskRepository _deskRepository;
+
+        public DeskService(IDeskRepository deskRepository)
+        {
+            _deskRepository = deskRepository;
+        }
+
         public Task<int> CreateDesk(Desk desk)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteDesk(int deskId)
+        public async Task DeleteDesk(int deskId)
         {
-            throw new NotImplementedException();
+            await _deskRepository.DeleteDesk(deskId);     
         }
 
         public Task<IEnumerable<Desk>> GetAllDesks()
         {
-            throw new NotImplementedException();
+            return _deskRepository.GetAllDesks();
         }
 
         public Task<Desk> GetDeskById(int deskId)
         {
-            throw new NotImplementedException();
+            return _deskRepository.GetDeskById(deskId);
         }
 
-        public Task<bool> UpdateDesk(Desk desk)
+        public async Task<bool> UpdateDesk(Desk desk)
+        {
+            return await _deskRepository.UpdateDesk(desk);        }
+
+        Task<bool> IDeskService.DeleteDesk(int deskId)
         {
             throw new NotImplementedException();
         }
