@@ -1,4 +1,4 @@
-﻿using FluxPlanner.Interfaces;
+﻿using FluxPlanner.Interfaces.IService;
 using FluxPlanner.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +32,7 @@ namespace FluxPlanner.Controllers
 
         // POST: api/Floors
         [HttpPost]
-        public async Task<ActionResult<Floor>> PostFloor(Floor floor)
+        public async Task<ActionResult<Floor>> CreateFloor(Floor floor)
         {
             await _floorService.CreateFloor(floor);
             return CreatedAtAction("GetFloor", new { id = floor.FloorId }, floor);

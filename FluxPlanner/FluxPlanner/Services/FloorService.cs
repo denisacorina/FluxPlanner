@@ -1,4 +1,5 @@
-﻿using FluxPlanner.Interfaces;
+﻿using FluxPlanner.Interfaces.IRepository;
+using FluxPlanner.Interfaces.IService;
 using FluxPlanner.Models;
 using FluxPlanner.Repository;
 using Microsoft.AspNetCore.Mvc;

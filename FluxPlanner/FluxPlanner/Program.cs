@@ -20,7 +20,7 @@ builder.Services.AddDbContext<PlannerContext>(options =>
 
 });
 
-builder.Services.AddScoped<ReservationRepository>();
+builder.Services.AddScoped<DeskReservationRepository>();
 
 //USERS
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -30,6 +30,15 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IFloorRepository, FloorRepository>();
 builder.Services.AddScoped<IFloorService, FloorService>();
 
+//DESKS
+builder.Services.AddScoped<IDeskRepository, DeskRepository>();
+
+//ROOMS
+//builder.Services.AddScoped<IRoomService, RoomService>();
+
+//DESK RESERVATIONS
+builder.Services.AddScoped<IDeskReservationRepository, DeskReservationRepository>();
+builder.Services.AddScoped<IDeskReservationService, DeskReservationService>();
 
 var app = builder.Build();
 

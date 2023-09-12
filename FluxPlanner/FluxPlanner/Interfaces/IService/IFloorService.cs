@@ -1,7 +1,7 @@
 ﻿using FluxPlanner.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FluxPlanner.Interfaces
+namespace FluxPlanner.Interfaces.IService
 {
     public interface IFloorService
     {
