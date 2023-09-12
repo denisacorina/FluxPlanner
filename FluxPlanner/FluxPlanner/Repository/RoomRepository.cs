@@ -1,10 +1,11 @@
 ﻿using FluxPlanner.Data;
+using FluxPlanner.Interfaces.IRepository;
 using FluxPlanner.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FluxPlanner.Repository
 {
-    public class RoomRepository
+    public class RoomRepository:IRoomRepository
     {
         private readonly PlannerContext _context;
 
