@@ -4,6 +4,7 @@ using FluxPlanner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxPlanner.Migrations
 {
     [DbContext(typeof(PlannerContext))]
-    partial class PlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20230912103141_UpdatedDeskModel")]
+    partial class UpdatedDeskModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,9 +116,9 @@ namespace FluxPlanner.Migrations
                         {
                             ReservationId = 1,
                             DeskId = 1,
-                            EndDate = new DateTime(2023, 9, 12, 13, 6, 59, 955, DateTimeKind.Utc).AddTicks(566),
+                            EndDate = new DateTime(2023, 9, 12, 10, 31, 41, 168, DateTimeKind.Utc).AddTicks(2126),
                             ReservationStatus = 0,
-                            StartDate = new DateTime(2023, 9, 12, 13, 6, 59, 955, DateTimeKind.Utc).AddTicks(564),
+                            StartDate = new DateTime(2023, 9, 12, 10, 31, 41, 168, DateTimeKind.Utc).AddTicks(2122),
                             UserId = 1
                         });
                 });

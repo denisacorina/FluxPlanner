@@ -40,7 +40,7 @@ namespace FluxPlanner.Controllers
         public async Task<ActionResult<Desk>> CreateDesk(Desk desk)
         {
             if (desk == null)
-            {
+        {
                 return BadRequest();
             }
             await _deskService.CreateDesk(desk);

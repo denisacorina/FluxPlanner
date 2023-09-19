@@ -38,14 +38,14 @@ namespace FluxPlanner.Data
            );
 
             modelBuilder.Entity<Desk>().HasData(
-               new Desk { DeskId = 1, IsDeskAvailable = true, RoomId = 1 },
-               new Desk { DeskId = 2, IsDeskAvailable = true, RoomId = 1 },
-               new Desk { DeskId = 3, IsDeskAvailable = true, RoomId = 1 },
-               new Desk { DeskId = 4, IsDeskAvailable = true, RoomId = 1 },
-               new Desk { DeskId = 5, IsDeskAvailable = true, RoomId = 2 },
-               new Desk { DeskId = 6, IsDeskAvailable = true, RoomId = 3 },
-               new Desk { DeskId = 7, IsDeskAvailable = true, RoomId = 4 },
-               new Desk { DeskId = 8, IsDeskAvailable = true, RoomId = 4 }
+               new Desk { DeskId = 1, RoomId = 1 },
+               new Desk { DeskId = 2, RoomId = 1 },
+               new Desk { DeskId = 3, RoomId = 1 },
+               new Desk { DeskId = 4, RoomId = 1 },
+               new Desk { DeskId = 5, RoomId = 2 },
+               new Desk { DeskId = 6, RoomId = 3 },
+               new Desk { DeskId = 7, RoomId = 4 },
+               new Desk { DeskId = 8, RoomId = 4 }
            );
 
             modelBuilder.Entity<DeskReservation>().HasData(

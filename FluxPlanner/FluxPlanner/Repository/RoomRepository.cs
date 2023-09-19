@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FluxPlanner.Repository
 {
-    public class RoomRepository:IRoomRepository
+    public class RoomRepository : IRoomRepository
     {
         private readonly PlannerContext _context;
 
@@ -36,6 +36,12 @@ namespace FluxPlanner.Repository
             }
         }
 
+        public async Task<IEnumerable<Room>> GetRoomsByFloor(int floorId)
+        {
+            return await _context.Rooms
+                .Where(f => f.FloorId == floorId)
+                .ToListAsync();
+        }
     }
 }
 

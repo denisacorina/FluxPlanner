@@ -1,7 +1,5 @@
 ﻿using FluxPlanner.Interfaces.IService;
 using FluxPlanner.Models;
-using FluxPlanner.Repository;
-using FluxPlanner.Services;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
 

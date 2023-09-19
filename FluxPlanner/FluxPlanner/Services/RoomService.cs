@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FluxPlanner.Services
 {
-    public class RoomService:IRoomService
+    public class RoomService : IRoomService
     {
         private readonly IRoomRepository _roomRepository;
 
@@ -31,5 +31,9 @@ namespace FluxPlanner.Services
             await _roomRepository.DeleteRoom(roomId);
         }
 
+        public async Task<IEnumerable<Room>> GetRoomsByFloor(int floorId)
+        {
+            return await _roomRepository.GetRoomsByFloor(floorId);
+        }
     }
 }
