@@ -12,5 +12,7 @@ namespace FluxPlanner.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public ReservationStatus ReservationStatus { get; set; }
+        public User User { get; set; }
+
     }
 }

@@ -38,6 +38,24 @@ namespace FluxPlanner.Services
             }
         }
 
+     //   public async Task<DeskReservation> GetReservationByUserId(int IdUser )
+        
+public Task<DeskReservation> GetReservationByUserId(int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        //var existingReservation = await _deskReservationRepository.GetReservationByUserId(reservation.IdUser);
+
+        //if (existingReservation != null)
+        //{
+        //    throw new InvalidOperationException("User already has a reserved desk.");
+        //}
+
+        //// Proceed to create a new reservation
+        // return await _deskReservationRepository.CreateAsync(IdUser); }
+
+
         public async Task<ActionResult<IEnumerable<DeskReservation>>> GetReservations()
         {
             return await _deskReservationRepository.GetReservations();

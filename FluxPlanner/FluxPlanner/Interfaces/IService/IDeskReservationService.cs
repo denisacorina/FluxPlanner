@@ -7,5 +7,6 @@ namespace FluxPlanner.Interfaces.IService
     {
         public Task<ActionResult<IEnumerable<DeskReservation>>> GetReservations();
         public Task<DeskReservation> CreateDeskReservation(DeskReservation reservation);
+        public Task<DeskReservation> GetReservationByUserId(int UserId);
     }
 }

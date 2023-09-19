@@ -3,6 +3,7 @@ using FluxPlanner.Models;
 using FluxPlanner.Repository;
 using FluxPlanner.Services;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 
 namespace FluxPlanner.Controllers
 {
@@ -26,8 +27,19 @@ namespace FluxPlanner.Controllers
         [HttpPost]
         public async Task<ActionResult<DeskReservation>> CreateReservation(DeskReservation reservation)
         {
+            
+            //Check if the user already has a reservation
+            var existingReservation = await _deskReservationService.GetReservationByUserId(reservation.UserId);
+
+            if (existingReservation != null)
+            {
+                return BadRequest("User already has a reserved desk.");
+            }
+
+            // Create a new reservation
             var createdReservation = await _deskReservationService.CreateDeskReservation(reservation);
             return CreatedAtAction(nameof(GetReservations), new { id = createdReservation.ReservationId }, createdReservation);
         }
     }
     }
+    
