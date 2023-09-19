@@ -10,14 +10,19 @@ namespace FluxPlanner.Services
     {
         private readonly IDeskReservationRepository _deskReservationRepository;
 
+
         public DeskReservationService(IDeskReservationRepository deskReservationRepository)
         {
             _deskReservationRepository = deskReservationRepository;
+
         }
 
         public async Task<DeskReservation> CreateDeskReservation(DeskReservation reservation)
         {
+
+
             bool isDeskAvailable = _deskReservationRepository.IsDeskAvailableForReservation(reservation.DeskId, reservation.StartDate, reservation.EndDate);
+
 
             if (isDeskAvailable)
             {
@@ -29,7 +34,7 @@ namespace FluxPlanner.Services
                     EndDate = reservation.EndDate,
                     ReservationStatus = ReservationStatus.Reserved
                 };
-              
+
                 await _deskReservationRepository.CreateDeskReservation(newReservation);
                 return newReservation;
             }
@@ -37,6 +42,7 @@ namespace FluxPlanner.Services
             {
                 throw new Exception("The desk is not available.");
             }
+
         }
 
         public async Task<ActionResult<IEnumerable<DeskReservation>>> GetReservations()

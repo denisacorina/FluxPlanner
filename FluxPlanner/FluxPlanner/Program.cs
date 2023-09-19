@@ -42,6 +42,11 @@ builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<IDeskReservationRepository, DeskReservationRepository>();
 builder.Services.AddScoped<IDeskReservationService, DeskReservationService>();
 
+builder.Services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+{
+    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,6 +60,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseCors("ApiCorsPolicy");
 
 app.MapControllers();
 
